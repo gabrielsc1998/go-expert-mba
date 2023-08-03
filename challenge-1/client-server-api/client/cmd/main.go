@@ -42,7 +42,7 @@ func main() {
 }
 
 func getQuotation() *Quotation {
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Millisecond)
+	ctx, cancel := context.WithTimeout(context.Background(), 300*time.Millisecond)
 	defer cancel()
 
 	url := "http://localhost:8080/cotacao"
