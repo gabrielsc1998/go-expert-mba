@@ -25,13 +25,14 @@ func (uc *GetQuotationUseCase) Execute(code string, codeIn string) (*presenter.Q
 		return nil, err
 	}
 
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Millisecond)
-	err = uc.repository.Save(receivedQuotation, &ctx)
-	defer cancel()
-
-	if ctx.Err() == context.DeadlineExceeded {
-		log.Println("Timeout exceeded for save quotation")
-	}
+	go func() {
+		ctx, cancel := context.WithTimeout(context.Background(), 1*time.Millisecond)
+		err = uc.repository.Save(receivedQuotation, &ctx)
+		defer cancel()
+		if ctx.Err() == context.DeadlineExceeded {
+			log.Println("Timeout exceeded for save quotation")
+		}
+	}()
 
 	if err != nil {
 		return nil, err
