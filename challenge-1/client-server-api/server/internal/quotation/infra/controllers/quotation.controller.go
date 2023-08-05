@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	usecases "github.com/gabrielsc1998/go-expert-challenges/client-server-api/server/internal/quotation/application/use-cases"
+	usecases "github.com/gabrielsc1998/go-expert-mba/challenge-1/client-server-api/server/internal/quotation/application/use-cases"
 )
 
 type QuotationController struct {

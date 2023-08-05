@@ -1,4 +1,4 @@
-module github.com/gabrielsc1998/go-expert-challenges/client-server-api/server
+module github.com/gabrielsc1998/go-expert-mba/challenge-1/client-server-api/server
 
 go 1.18
 

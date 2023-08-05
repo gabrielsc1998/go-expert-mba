@@ -3,10 +3,10 @@ package repository
 import (
 	"context"
 
-	"github.com/gabrielsc1998/go-expert-challenges/client-server-api/server/internal/database"
-	quotation "github.com/gabrielsc1998/go-expert-challenges/client-server-api/server/internal/quotation/domain/entity"
-	"github.com/gabrielsc1998/go-expert-challenges/client-server-api/server/internal/quotation/infra/db/mapper"
-	"github.com/gabrielsc1998/go-expert-challenges/client-server-api/server/internal/quotation/infra/db/models"
+	"github.com/gabrielsc1998/go-expert-mba/challenge-1/client-server-api/server/internal/database"
+	quotation "github.com/gabrielsc1998/go-expert-mba/challenge-1/client-server-api/server/internal/quotation/domain/entity"
+	"github.com/gabrielsc1998/go-expert-mba/challenge-1/client-server-api/server/internal/quotation/infra/db/mapper"
+	"github.com/gabrielsc1998/go-expert-mba/challenge-1/client-server-api/server/internal/quotation/infra/db/models"
 )
 
 type QuotationRepository struct {

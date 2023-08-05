@@ -1,7 +1,7 @@
 package quotation
 
 import (
-	"github.com/gabrielsc1998/go-expert-challenges/client-server-api/server/internal/quotation/infra/presenter"
+	"github.com/gabrielsc1998/go-expert-mba/challenge-1/client-server-api/server/internal/quotation/infra/presenter"
 )
 
 type Quotation struct {

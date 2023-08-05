@@ -5,13 +5,13 @@ import (
 
 	"github.com/go-chi/chi/v5"
 
-	"github.com/gabrielsc1998/go-expert-challenges/client-server-api/server/configs"
-	"github.com/gabrielsc1998/go-expert-challenges/client-server-api/server/internal/database"
-	usecases "github.com/gabrielsc1998/go-expert-challenges/client-server-api/server/internal/quotation/application/use-cases"
-	"github.com/gabrielsc1998/go-expert-challenges/client-server-api/server/internal/quotation/infra/controllers"
-	"github.com/gabrielsc1998/go-expert-challenges/client-server-api/server/internal/quotation/infra/db/models"
-	"github.com/gabrielsc1998/go-expert-challenges/client-server-api/server/internal/quotation/infra/db/repository"
-	"github.com/gabrielsc1998/go-expert-challenges/client-server-api/server/internal/quotation/infra/gateway"
+	"github.com/gabrielsc1998/go-expert-mba/challenge-1/client-server-api/server/configs"
+	"github.com/gabrielsc1998/go-expert-mba/challenge-1/client-server-api/server/internal/database"
+	usecases "github.com/gabrielsc1998/go-expert-mba/challenge-1/client-server-api/server/internal/quotation/application/use-cases"
+	"github.com/gabrielsc1998/go-expert-mba/challenge-1/client-server-api/server/internal/quotation/infra/controllers"
+	"github.com/gabrielsc1998/go-expert-mba/challenge-1/client-server-api/server/internal/quotation/infra/db/models"
+	"github.com/gabrielsc1998/go-expert-mba/challenge-1/client-server-api/server/internal/quotation/infra/db/repository"
+	"github.com/gabrielsc1998/go-expert-mba/challenge-1/client-server-api/server/internal/quotation/infra/gateway"
 )
 
 func initializeDatabase() *database.Database {

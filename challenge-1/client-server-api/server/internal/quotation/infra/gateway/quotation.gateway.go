@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/gabrielsc1998/go-expert-challenges/client-server-api/server/configs"
-	quotation "github.com/gabrielsc1998/go-expert-challenges/client-server-api/server/internal/quotation/domain/entity"
+	"github.com/gabrielsc1998/go-expert-mba/challenge-1/client-server-api/server/configs"
+	quotation "github.com/gabrielsc1998/go-expert-mba/challenge-1/client-server-api/server/internal/quotation/domain/entity"
 )
 
 type EconomyAwesomeAPIGateway struct {

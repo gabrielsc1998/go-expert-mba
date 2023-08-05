@@ -1,8 +1,8 @@
 package mapper
 
 import (
-	quotation "github.com/gabrielsc1998/go-expert-challenges/client-server-api/server/internal/quotation/domain/entity"
-	"github.com/gabrielsc1998/go-expert-challenges/client-server-api/server/internal/quotation/infra/db/models"
+	quotation "github.com/gabrielsc1998/go-expert-mba/challenge-1/client-server-api/server/internal/quotation/domain/entity"
+	"github.com/gabrielsc1998/go-expert-mba/challenge-1/client-server-api/server/internal/quotation/infra/db/models"
 )
 
 type QuotationMapper struct {
