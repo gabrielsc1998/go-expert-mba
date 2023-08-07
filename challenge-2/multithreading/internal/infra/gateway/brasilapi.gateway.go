@@ -17,6 +17,10 @@ func NewBrasilAPIGateway() *BrasilAPIGateway {
 	return &BrasilAPIGateway{}
 }
 
+func (v *BrasilAPIGateway) Name() string {
+	return "BrasilAPI"
+}
+
 func (v *BrasilAPIGateway) GetAddressByCep(cep string, ctx *context.Context) (*entity.Cep, error) {
 	req, err := http.NewRequestWithContext(*ctx, http.MethodGet, "https://brasilapi.com.br/api/cep/v1/"+cep, nil)
 	if err != nil {

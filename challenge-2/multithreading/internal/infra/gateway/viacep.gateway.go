@@ -17,6 +17,10 @@ func NewViaCepGateway() *ViaCepGateway {
 	return &ViaCepGateway{}
 }
 
+func (v *ViaCepGateway) Name() string {
+	return "ViaCep"
+}
+
 func (v *ViaCepGateway) GetAddressByCep(cep string, ctx *context.Context) (*entity.Cep, error) {
 	req, err := http.NewRequestWithContext(*ctx, http.MethodGet, "https://viacep.com.br/ws/"+cep+"/json/", nil)
 	if err != nil {

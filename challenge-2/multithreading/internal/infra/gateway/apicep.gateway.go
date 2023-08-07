@@ -17,6 +17,10 @@ func NewAPICepGateway() *APICepGateway {
 	return &APICepGateway{}
 }
 
+func (v *APICepGateway) Name() string {
+	return "APICep"
+}
+
 func (v *APICepGateway) GetAddressByCep(cep string, ctx *context.Context) (*entity.Cep, error) {
 	receivedCep := cep[:5] + "-" + cep[5:]
 	req, err := http.NewRequestWithContext(*ctx, http.MethodGet, "https://cdn.apicep.com/file/apicep/"+receivedCep+".json", nil)
