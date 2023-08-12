@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/gabrielsc1998/go-expert-mba/challenge-3/clean-architecture/configs"
 	"github.com/gabrielsc1998/go-expert-mba/challenge-3/clean-architecture/internal/event/handler"
 	"github.com/gabrielsc1998/go-expert-mba/challenge-3/clean-architecture/internal/infra/database"
@@ -27,13 +29,6 @@ var (
 	rabbitMQ *rabbitmq.RabbitMQ
 )
 
-func init() {
-	setup := setup.NewSetup()
-	db = setup.DB
-	conf = setup.Configs
-	rabbitMQ = setup.RabbitMQ
-}
-
 func setupWebserver(input controllers.OrdersControllerInput) *webserver.WebServer {
 	webserver := webserver.NewWebServer(conf.WebServerPort)
 	ordersController := controllers.NewOrdersController(controllers.OrdersControllerInput{
@@ -59,6 +54,22 @@ func setupGraphqlServer(input graphserver.GraphQLServerInput) *graphserver.Graph
 		Resolvers: input.Resolvers,
 	})
 	return graphql
+}
+
+func orderCreatedConsumer() {
+	msgs, _ := rabbitMQ.Channel.Consume("created_order", "", true, false, false, false, nil)
+	for msg := range msgs {
+		msg.Ack(false)
+		fmt.Printf("Consumer created_order received: %s", string(msg.Body))
+	}
+}
+
+func init() {
+	setup := setup.NewSetup()
+	db = setup.DB
+	conf = setup.Configs
+	rabbitMQ = setup.RabbitMQ
+	go orderCreatedConsumer()
 }
 
 func main() {

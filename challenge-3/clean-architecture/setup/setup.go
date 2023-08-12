@@ -57,5 +57,17 @@ func connectRabbitMQ(configs *configs.Conf) *rabbitmq.RabbitMQ {
 	if err != nil {
 		panic(err)
 	}
+	err = rabbitMQ.Channel.ExchangeDeclare("orders", "topic", true, false, false, false, nil)
+	if err != nil {
+		panic(err)
+	}
+	queue, err := rabbitMQ.Channel.QueueDeclare("created_order", true, false, false, false, nil)
+	if err != nil {
+		panic(err)
+	}
+	err = rabbitMQ.Channel.QueueBind(queue.Name, "order.created", "orders", false, nil)
+	if err != nil {
+		panic(err)
+	}
 	return rabbitMQ
 }
