@@ -2,7 +2,6 @@ package handler
 
 import (
 	"encoding/json"
-	"fmt"
 	"sync"
 
 	"github.com/gabrielsc1998/go-expert-mba/challenge-3/clean-architecture/pkg/events"
@@ -21,7 +20,7 @@ func NewOrderCreatedHandler(rabbitMQChannel *amqp.Channel) *OrderCreatedHandler 
 
 func (h *OrderCreatedHandler) Handle(event events.EventInterface, wg *sync.WaitGroup) {
 	defer wg.Done()
-	fmt.Printf("Order created: %v", event.GetPayload())
+	// fmt.Printf("Order created: %v", event.GetPayload())
 	jsonOutput, _ := json.Marshal(event.GetPayload())
 
 	msgRabbitmq := amqp.Publishing{
@@ -30,10 +29,10 @@ func (h *OrderCreatedHandler) Handle(event events.EventInterface, wg *sync.WaitG
 	}
 
 	h.RabbitMQChannel.Publish(
-		"amq.direct", // exchange
-		"",           // key name
-		false,        // mandatory
-		false,        // immediate
-		msgRabbitmq,  // message to publish
+		"orders",        // exchange
+		"order.created", // key name
+		false,           // mandatory
+		false,           // immediate
+		msgRabbitmq,     // message to publish
 	)
 }

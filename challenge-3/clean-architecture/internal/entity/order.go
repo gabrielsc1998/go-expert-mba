@@ -1,6 +1,10 @@
 package entity
 
-import "errors"
+import (
+	"errors"
+
+	"github.com/google/uuid"
+)
 
 type Order struct {
 	ID         string
@@ -9,16 +13,21 @@ type Order struct {
 	FinalPrice float64
 }
 
-func NewOrder(id string, price float64, tax float64) (*Order, error) {
-	order := &Order{
-		ID:    id,
-		Price: price,
-		Tax:   tax,
-	}
-	err := order.IsValid()
+func NewOrder(price float64, tax float64) (*Order, error) {
+	id, err := uuid.NewUUID()
 	if err != nil {
 		return nil, err
 	}
+	order := &Order{
+		ID:    id.String(),
+		Price: price,
+		Tax:   tax,
+	}
+	err = order.IsValid()
+	if err != nil {
+		return nil, err
+	}
+	order.CalculateFinalPrice()
 	return order, nil
 }
 
